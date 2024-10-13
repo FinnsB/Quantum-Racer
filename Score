@@ -9,5 +9,5 @@ func _ready():
 
 
 func _process(delta):
-	Score += 1
+	Score += .1
 	ScoreLabel.text = "Score: %d" % Score 
