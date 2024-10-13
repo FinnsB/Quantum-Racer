@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5ncccqh0xnji"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_7euv5"]
+[ext_resource type="PackedScene" uid="uid://sx7y6gw0jynm" path="res://terrain_controller.tscn" id="3_8uovq"]
+[ext_resource type="Script" path="res://Score Code.gd" id="3_vq4u0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cnopu"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_8cfeg"]
+sky_material = SubResource("ProceduralSkyMaterial_cnopu")
+
+[sub_resource type="Environment" id="Environment_thg38"]
+background_mode = 2
+sky = SubResource("Sky_8cfeg")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_knjpy"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gonxt"]
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_thg38")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1.1, 2.08165e-12)
+script = ExtResource("1_7euv5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_knjpy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CapsuleMesh_gonxt")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.961531, 0.274698, 0, -0.274698, 0.961531, 0, 1.29201, 0.890092)
+fov = 110.3
+
+[node name="TerrainController" parent="." instance=ExtResource("3_8uovq")]
+
+[node name="UserInterface" type="CanvasLayer" parent="."]
+
+[node name="GameUI" type="Control" parent="UserInterface"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_vq4u0")
+
+[node name="Score" type="Label" parent="UserInterface/GameUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -857.0
+offset_right = 857.0
+offset_bottom = 573.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 84
+text = "Score:00"
+horizontal_alignment = 1
