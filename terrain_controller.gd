@@ -11,11 +11,11 @@ class_name TerrainController
 var TerrainBlocks: Array = []
 ## The set of terrian blocks which are currently rendered to viewport
 var terrain_belt: Array[MeshInstance3D] = []
-@export var terrain_velocity: float = 15.0
+@export var terrain_velocity: float = 10.0
 ## The number of blocks to keep rendered to the viewport
 @export var num_terrain_blocks = 4
 ## Path to directory holding the terrain block scenes
-@export_dir var terrian_blocks_path = "res://Terrain_Folder"
+@export_dir var terrian_blocks_path = "res://Terrian_Folder"
 
 
 func _ready() -> void:
