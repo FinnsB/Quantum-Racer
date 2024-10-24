@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyabki2itnrdd"]
+
+[ext_resource type="Script" path="res://PlayButton.gd" id="1_wokms"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_agifc"]
+font_size = 200
+
+[node name="Game over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 653.0
+color = Color(0.537058, 0.958837, 0.77186, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -46.0
+offset_right = 1276.0
+offset_bottom = 275.0
+text = "GAMEOVER"
+label_settings = SubResource("LabelSettings_agifc")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 224.0
+offset_right = 976.0
+offset_bottom = 561.0
+text = "Restart"
+script = ExtResource("1_wokms")
